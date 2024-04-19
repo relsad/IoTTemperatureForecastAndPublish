@@ -16,8 +16,8 @@ import random
 
 
 # WiFi network
-WIFI_SSID='TP-Link_A64D'#'hope'#'TP-Link_5701'#'NUdormitory'## # Network SSID
-WIFI_PASS='63642070'#'12345678'##'65851111'#'1234512345'#'65851111'#  # Network key
+WIFI_SSID= ""# Network SSID
+WIFI_PASS= ""# Network key
 url = 'https://api.openai.com/v1/chat/completions'
 
 led = Pin(35, Pin.OUT) # v3
@@ -25,7 +25,7 @@ rst = Pin(21, Pin.OUT)
 rst.value(1)
 
 
-OUT_API_KEY = "6e4ba4a5984b21372e2c66d031ee7278"
+OUT_API_KEY = "" #openweathermap API key
 lat = "51.091737"
 lon = "71.399037"
 
@@ -43,9 +43,9 @@ if not wlan.isconnected():
 print('Connected to WiFi\nIP Address: ' + wlan.ifconfig()[0])
 
 # Telegram Bot credentials
-BOT_TOKEN = "6474504937:AAE2jQ6cXf72gT70mE-VvQ7c5z1AVLuaMaA"
-CHAT_ID = '-1002015004176'
-TELEGRAM_URL = "https://api.telegram.org/bot6474504937:AAE2jQ6cXf72gT70mE-VvQ7c5z1AVLuaMaA/sendMessage"
+BOT_TOKEN = "" #Telegram Bot Token
+CHAT_ID = '' # Telegram channel ID
+TELEGRAM_URL = "https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
 # SPI pins
 SCK  = 9
@@ -93,7 +93,7 @@ def askGpt(temp, temp2, lum):
     open_ai_question = random.choice(questions) 
     telegram_question = "Comfortability to work in atrium"
     max_words = " Max 250 characters" 
-    api_key = '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' #'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' # ChatGPT API key
+    api_key = '' # ChatGPT API key
 
     payload = ujson.dumps({
     "model": "gpt-3.5-turbo-1106",
@@ -162,7 +162,7 @@ def getOutTemp():
 def sendTelegramMessage(message):
     url = TELEGRAM_URL
     data = {
-        "chat_id": '-1002015004176',
+        "chat_id": '', #chat id for telegram bot channel
         "text": message
     }
     # Send the POST request
@@ -186,7 +186,7 @@ def getTimeNow():
 
 def outsideForecastApiTempCall(time_of_day):
     date_str,time_str,time_zone_offset = getTimeNow()
-    API_KEY = "cb7c56e8b1f4694ba345f1551685e4c3"
+    API_KEY = "" #openweathermap API key
     lat = "51.091737"
     lon = "71.399037"
     units = "metric"
